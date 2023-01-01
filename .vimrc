@@ -1,3 +1,5 @@
+" MY VIM CONFIGURATION
+
 " --- BASIC COMMANDS ---{{{
 " Navigation
 set number
@@ -24,11 +26,24 @@ autocmd FileType make setlocal noexpandtab
 set showtabline=2 "other files tabs
 
 " Theme
-" set termguicolors " not with tmux
 set background=dark
-" colorscheme gruvbox8_hard
-colorscheme elly
-let g:elly_termmode="cterm"
+colorscheme gruvbox8_hard
+" colorscheme elly
+" let g:elly_termmode="cterm"
+
+" Fixes color problem with tmux
+if exists('$TMUX')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+else
+  set termguicolors
+endif
+
+" if exists("$TMUX")
+"   let &t_RB = "\ePtmux;\e\e]11;?\007\e\\"
+" endif
+
 
 syntax on
 set omnifunc=syntaxcomplete#Complete
@@ -45,7 +60,7 @@ set smartcase    " ... unless they contain at least one capital letter
 
 
 " --- MAPPINGS ---{{{
-let mapleader = ' '
+let mapleader = ' ' " by default, <leader> = \w
 
 " Press `SHIFT+E+e` to scape
 inoremap Ee <esc>
@@ -105,8 +120,9 @@ nnoremap <c-p> :FZF<CR>
 
 
 " --- PLUGINS ---{{{
-silent! call plug#begin('~/.vim/pack/git-plugins/start/')
 
+" --- Plugins Download ---{{{
+silent! call plug#begin('~/.vim/pack/git-plugins/start/')
 
 " --- Nav Bar
 Plug 'vim-airline/vim-airline'
@@ -148,17 +164,18 @@ Plug 'preservim/vim-markdown'
 " --- Git
 " Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-repeat'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " --- tmux integration
 Plug 'christoomey/vim-tmux-navigator'
 
+" Clipboard ssh
+Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+
 call plug#end()
+"}}}
 
-
-
-
-" --- PLUGINS CONFIG ---
+" --- Plugins Config ---{{{
 "
 " ALE
 " linters
@@ -233,7 +250,9 @@ let g:airline= {
       \}
 
 " let g:airline_theme='stellarized_dark'
-let g:airline_theme='elly'
+let g:airline_theme='gruvbox'
+" let g:airline_theme='base16_gruvbox_dark_hard'
+" let g:airline_theme='elly'
 
 
 " MUcomplete
@@ -241,6 +260,19 @@ set noinfercase
 set completeopt-=preview
 set completeopt+=menuone,noselect
 let g:mucomplete#enable_auto_at_startup = 2
+
+" IDE
+let g:vim_markdown_conceal_code_blocks = 0
+
+" Clipboard
+vnoremap <leader>c :OSCYank<CR>
+nmap <leader>o <Plug>OSCYank
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif"
+set clipboard& clipboard^=unnamed,unnamedplus
+let g:oscyank_term = 'tmux'
+"let g:oscyank_silent = v:true
+
+"}}}
 
 "}}}
 
