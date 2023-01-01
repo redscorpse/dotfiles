@@ -169,9 +169,6 @@ Plug 'airblade/vim-gitgutter'
 " --- tmux integration
 Plug 'christoomey/vim-tmux-navigator'
 
-" Clipboard ssh
-Plug 'ojroques/vim-oscyank', {'branch': 'main'}
-
 call plug#end()
 "}}}
 
@@ -264,13 +261,6 @@ let g:mucomplete#enable_auto_at_startup = 2
 " IDE
 let g:vim_markdown_conceal_code_blocks = 0
 
-" Clipboard
-vnoremap <leader>c :OSCYank<CR>
-nmap <leader>o <Plug>OSCYank
-autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | OSCYankReg " | endif"
-set clipboard& clipboard^=unnamed,unnamedplus
-let g:oscyank_term = 'tmux'
-"let g:oscyank_silent = v:true
 
 "}}}
 
