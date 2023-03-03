@@ -27,9 +27,8 @@ set showtabline=2 "other files tabs
 
 " Theme
 set background=dark
-colorscheme gruvbox8_hard
-" colorscheme elly
-" let g:elly_termmode="cterm"
+colorscheme codedark
+" colorscheme gruvbox8_hard
 
 " Fixes color problem with tmux
 if exists('$TMUX')
@@ -150,10 +149,11 @@ Plug 'jiangmiao/auto-pairs' " adds second pair () [] '' etc
 Plug 'tpope/vim-surround' " ysw)
 
 " --- Themes
-Plug 'rafi/awesome-vim-colorschemes' " Retro Scheme
+Plug 'morhetz/gruvbox'
+"Plug 'rafi/awesome-vim-colorschemes' "Retro Scheme
 " Plug 'glepnir/dashboard-nvim'
-" Plug 'ulwlu/elly.vim'
-" Plug 'ayu-theme/ayu-vim'
+Plug 'shiyanhui/elly.vim'
+Plug 'tomasiser/vim-code-dark'
 
 " --- IDE
 Plug 'dense-analysis/ale' " Syntax checker
