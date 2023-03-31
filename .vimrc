@@ -11,7 +11,7 @@ set cursorline
 set cursorcolumn
 
 set wildmenu " show menu options
-set showcmd " shows what u type
+set showcmd " shows what you type
 
 
 " Tabs
@@ -29,6 +29,10 @@ set showtabline=2 "other files tabs
 set background=dark
 colorscheme codedark
 " colorscheme gruvbox8_hard
+" let g:gruvbox_contrast_dark = "hard"
+highlight Normal ctermbg=NONE
+set laststatus=2
+set noshowmode
 
 " Fixes color problem with tmux
 if exists('$TMUX')
@@ -39,13 +43,11 @@ else
   set termguicolors
 endif
 
-" if exists("$TMUX")
-"   let &t_RB = "\ePtmux;\e\e]11;?\007\e\\"
-" endif
-
 
 syntax on
 set omnifunc=syntaxcomplete#Complete
+
+set encoding=utf8
 
 " Searching
 set showmatch
@@ -57,7 +59,6 @@ set smartcase    " ... unless they contain at least one capital letter
 "}}}
 
 
-
 " --- MAPPINGS ---{{{
 let mapleader = ' ' " by default, <leader> = \w
 
@@ -66,29 +67,36 @@ inoremap Ee <esc>
 vnoremap Ee <esc>
 nnoremap Ee <esc>
 
-" CTRL+A to select all
-nnoremap <C-a> ggVG
 
 " Move lines up or down.
 nnoremap K :m .-2<CR>==
 nnoremap J :m .+1<CR>==
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
-"
-" nnoremap <C-Up> :m .-2<CR>==
-" nnoremap <C-Down> :m .+1<CR>==
-" vnoremap <C-Up> :m '<-2<CR>gv=gv
-" vnoremap <C-Down> :m '>+1<CR>gv=gv
-"
-" nnoremap <C-k> :m .-1<CR>==
-" nnoremap <C-j> :m .+2<CR>==
-" vnoremap <C-k> :m '<-1<CR>gv=gv
-" vnoremap <C-j> :m '>+2<CR>gv=gv
 
+
+" CTRL+A to select all
+nnoremap <C-a> ggVG
+" CTRL+s -> :w
+nnoremap <C-s> :w<CR>
+" CTRL+S -> :wq
+nnoremap <C-s> :wq<CR>
+" CTRL+q ->
+nnoremap <C-q> :q<CR>
 
 " Clipboard
-" set clipboard+=unnamed
-" set clipboard+=unnamedplus
+set clipboard^=unnamed,unnamedplus
+" CTRL+C -> copy to clipboard
+vnoremap <C-c> "+y
+nnoremap <C-c> "+y
+" CTRL+x -> cut to clipboard
+vnoremap <C-x> "+d
+nnoremap <C-x> "+d
+" CTRL+v -> paste to clipboard
+nnoremap <C-v> "+p
+vnoremap <C-v> "+p
+nnoremap <C-v> "+P
+vnoremap <C-v> "+P
 
 
 " NERDTree
@@ -136,7 +144,8 @@ Plug 'junegunn/fzf'
 
 " --- Utilities
 Plug 'yggdroot/indentline'
-Plug 'tpope/vim-commentary' " For Commenting gcc & gc
+" Plug 'tpope/vim-commentary' " For Commenting gcc & gc
+Plug 'preservim/nerdcommenter'
 Plug 'ap/vim-css-color' " color tags 
 
 " --- Autocompletion
@@ -151,20 +160,20 @@ Plug 'tpope/vim-surround' " ysw)
 " --- Themes
 Plug 'morhetz/gruvbox'
 "Plug 'rafi/awesome-vim-colorschemes' "Retro Scheme
-" Plug 'glepnir/dashboard-nvim'
-Plug 'shiyanhui/elly.vim'
 Plug 'tomasiser/vim-code-dark'
+" Plug 'shiyanhui/elly.vim'
+" Plug 'glepnir/dashboard-nvim'
 
 " --- IDE
-Plug 'dense-analysis/ale' " Syntax checker
+" Plug 'dense-analysis/ale' " Syntax checker
 Plug 'preservim/vim-markdown'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
 
 " --- Git
 " Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-repeat'
 Plug 'airblade/vim-gitgutter'
+" Plug 'tpope/vim-repeat'
 
 " --- tmux integration
 Plug 'christoomey/vim-tmux-navigator'
