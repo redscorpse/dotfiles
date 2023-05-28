@@ -27,8 +27,8 @@ set showtabline=2 "other files tabs
 
 " Theme
 set background=dark
-" colorscheme codedark
-colorscheme myGruvbox
+colorscheme codedark
+" colorscheme myGruvbox
 " let g:gruvbox_contrast_dark = "hard"
 highlight Normal ctermbg=NONE
 set laststatus=2
@@ -136,7 +136,7 @@ Plug 'vim-airline/vim-airline'
 
 " --- Navigation & Searching
 Plug 'preservim/nerdtree' " Tree
-Plug 'junegunn/fzf'
+" Plug 'junegunn/fzf'
 " Plug 'junegunn/fzf.vim'
 "Plug 'ctrlpvim/ctrlp.vim'
 
@@ -156,10 +156,10 @@ Plug 'tpope/vim-surround' " ysw)
 
 " --- Themes
 Plug 'morhetz/gruvbox'
-"Plug 'rafi/awesome-vim-colorschemes' "Retro Scheme
-" Plug 'glepnir/dashboard-nvim'
-Plug 'shiyanhui/elly.vim'
 Plug 'tomasiser/vim-code-dark'
+" Plug 'rafi/awesome-vim-colorschemes' "Retro Scheme
+" Plug 'glepnir/dashboard-nvim'
+" Plug 'shiyanhui/elly.vim'
 
 " --- IDE
 "Plug 'dense-analysis/ale' " Syntax checker
@@ -173,7 +173,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " --- tmux integration
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 "}}}
@@ -228,6 +228,8 @@ let g:airline= {
 
 " let g:airline_theme='gruvbox'
 
+" Coc
+let g:coc_disable_startup_warning = 1
 
 " MUcomplete
 " set noinfercase
