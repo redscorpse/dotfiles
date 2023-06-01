@@ -1,1 +1,49 @@
-"suggest.fontSize": 8
+{
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "ca",
+    "cpp",
+    "csharp",
+    "css",
+    "es",
+    "git-commit",
+    "gitcommit",
+    "go",
+    "handlebars",
+    "haskell",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "pug",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "vim",
+    "yaml",
+    "yml"
+  ],
+
+  "languageserver": {
+  "fortran": {
+    "command": "fortls",
+    "filetypes": ["fortran"],
+    "rootPatterns": [".fortls", ".git/"]
+  }
+}
+}
+
