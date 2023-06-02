@@ -3,7 +3,8 @@
 # Vim BASIC COMMANDS
 www.openvim.com
 
-|:--|:--|
+| Key | Action |
+|:--:|:--|
 |`i`, `I` |change to insert mode |
 |`h`, `j`, `k`, `l` |move L D U R |
 |`w`, `b`, `e`, `ge` | move word at a time |
@@ -32,6 +33,7 @@ www.openvim.com
 
 ### Insert
 
+| Key | Action |
 |:--:|:--|
 | `i` |Start typing before your cursor. |
 | `a` |Start typing after your cursor. |
@@ -44,6 +46,7 @@ www.openvim.com
 
 ### Navigate
 
+| Key | Action |
 |:--:|:--|
 | `gg` |Takes your cursor to the beginning of the file. |
 | `G` |Takes your cursor to the end of the file. |
@@ -59,6 +62,7 @@ www.openvim.com
 
 ### Search
 
+| Key | Action |
 |:--:|:--|
 | `fj` |Lets you find the closest j to the right of the line that you’re on. |
 | `FM` |Lets you find the closest M to the left of the line that you’re on. |
@@ -71,6 +75,7 @@ www.openvim.com
 
 ### Edit
 
+| Key | Action |
 |:--:|:--|
 | `d` |Deletes something. That something is usually one of our navigation demands. |
 | `df)` |Deletes everything up until ), including ). |
