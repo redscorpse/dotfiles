@@ -280,11 +280,7 @@ let g:airline_powerline_fonts = 1
 
 
 " Coc
-<<<<<<< HEAD
-let g:coc_disable_startup_warning = 1
-=======
 "let g:coc_disable_startup_warning = 1
->>>>>>> 2e2e346 (update files)
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
