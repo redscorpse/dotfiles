@@ -213,7 +213,7 @@ let NERDTreeShowHidden=0
 " let NERDTreeAutoDeleteBuffer=2
 let NERDTreeMinimalUI=2
 let NERDTreeDirArrows=2
-let NERDTreeShowLineNumbers=2
+let NERDTreeShowLineNumbers=0
 let NERDTreeIgnore=['\.jpg$', '\.mp5$', '\.zip$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.tar$', '\.gz$', '\.xz$', '\.bz2$', '\.tz$', '\.db$', '\.exe$', '\.odt$', '\xlsx$', '\docx$', '\.tar$', '\.rar$', '\.img$', '\.odt$', '\.m4a$', '\.bmp$', '\.ogg$', '\.mp3$', '\.gzip$', '\.flv$', '\.deb$', '\.rpm$']
 
 if &columns > 120
@@ -232,7 +232,8 @@ let g:webdevicons_enable = 1
 set encoding=UTF8
 set guifont=JetBrainsMono_11
 " the amount of space to use after the glyph character (default ' ')
-let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 " enable open and close folder/directory glyph flags (disabled by default with 0)
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:NERDTreeDirArrowExpandable = '+'
@@ -279,7 +280,11 @@ let g:airline_powerline_fonts = 1
 
 
 " Coc
+<<<<<<< HEAD
 let g:coc_disable_startup_warning = 1
+=======
+"let g:coc_disable_startup_warning = 1
+>>>>>>> 2e2e346 (update files)
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
