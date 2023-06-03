@@ -107,7 +107,7 @@ nnoremap cc cc<Esc>
 vnoremap c c<Esc>
 
 " Integrated terminal
-:nmap <C-t> :split \| wincmd J \| resize 5 \| terminal<CR>
+:nmap <C-t> :belowright split +terminal \| resize 10 \| startinsert<CR>
 
 
 "}}}
