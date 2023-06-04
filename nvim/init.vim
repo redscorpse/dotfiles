@@ -28,11 +28,8 @@ set showtabline=2 "other files tabs
 " Theme
 set background=dark
 colorscheme codedark
-" colorscheme myGruvbox
-" let g:gruvbox_contrast_dark = "hard"
 highlight Normal ctermbg=NONE
 set laststatus=2
-set noshowmode
 
 " Fixes color problem with tmux
 if exists('$TMUX')
@@ -121,20 +118,12 @@ silent! call plug#begin('~/.config/nvim/pack/git-plugins/start/')
 " --- Nav Bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
 
 " --- Navigation & Searching
 Plug 'preservim/nerdtree' " Tree
 Plug 'junegunn/fzf'
-" Plug 'junegunn/fzf.vim'
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'zhenyangze/vim-bitoai'
-
-
-" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
-" Plug 'nvim-lua/plenary.nvim'
-" Plug 'nvim-treesitter/nvim-treesitter'
-
 
 " --- Utilities
 Plug 'yggdroot/indentline'
@@ -154,11 +143,13 @@ Plug 'tpope/vim-surround' " ysw)
 " --- Themes
 Plug 'morhetz/gruvbox'
 Plug 'tomasiser/vim-code-dark'
+Plug 'catppuccin/vim'
+Plug 'aktersnurra/no-clown-fiesta.nvim'
+Plug 'rose-pine/vim'
 " Plug 'rafi/awesome-vim-colorschemes' "Retro Scheme
 " Plug 'shiyanhui/elly.vim'
 " Plug 'rebelot/kanagawa.nvim'
-" Plug 'glepnir/dashboard-nvim'
-Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons', {'commit': '58e57b6'}
 
 " --- IDE
 " Plug 'dense-analysis/ale' " Syntax checker
@@ -241,35 +232,13 @@ let g:NERDTreeDirArrowCollapsible = '~'
 " change the default dictionary mappings for file extension matches
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['f90'] = '󱈚'
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['tex'] = ''
 
 
 " Lightline (nav bar)
-let g:airline= {
-      \ 'active': {
-      \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
-      \   'right': [['filetype', 'percent', 'lineinfo'], ['gitbranch']]
-      \ },
-      \ 'inactive': {
-      \   'left': [['inactive'], ['relativepath']],
-      \   'right': [['bufnum']]
-      \ },
-      \ 'component': {
-      \   'bufnum': '%n',
-      \   'inactive': 'inactive'
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \ },
-      \ 'colorscheme': '',
-      \ 'subseparator': {
-      \   'left': '',
-      \   'right': ''
-      \ }
-      \}
-
+set noshowmode
+" let g:airline_theme='base16_gigavolt' "with rosepine_moon
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='gruvbox'
-" let g:airline_theme='deus'
 
 
 " MUcomplete
