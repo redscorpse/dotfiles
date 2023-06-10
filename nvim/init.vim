@@ -26,19 +26,11 @@ autocmd FileType make setlocal noexpandtab
 set showtabline=2 "other files tabs
 
 " Theme
+set termguicolors
 set background=dark
 colorscheme codedark
 highlight Normal ctermbg=NONE
 set laststatus=2
-
-" Fixes color problem with tmux
-if exists('$TMUX')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-else
-  set termguicolors
-endif
 
 
 " syntax on
@@ -51,6 +43,18 @@ set hlsearch      " highlight matches
 set incsearch     " incremental searching
 set ignorecase   " searches are case insensitive...
 set smartcase    " ... unless they contain at least one capital letter
+
+
+" tmux compatibility
+if exists('$TMUX')
+  " Fixes color problem
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+  
+  " C-b (tmux prefix) on vim is screen-backwards
+  noremap <C-g> <C-b>
+endif
 
 "}}}
 
@@ -98,7 +102,6 @@ vnoremap <C-v> "+P
 " Turn off the highlighting after doing a search.
 nnoremap <silent> <localleader>\ :nohlsearch<cr>
 
-
 " No insert mode after "cutting"
 nnoremap cc cc<Esc>
 vnoremap c c<Esc>
@@ -122,11 +125,11 @@ Plug 'vim-airline/vim-airline-themes'
 " --- Navigation & Searching
 Plug 'preservim/nerdtree' " Tree
 Plug 'junegunn/fzf'
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'zhenyangze/vim-bitoai'
 
 " --- Utilities
-Plug 'yggdroot/indentline'
+Plug 'Yggdroot/indentLine'
 " Plug 'tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'preservim/nerdcommenter'
 Plug 'ap/vim-css-color' " color tags 
@@ -170,14 +173,13 @@ call plug#end()
 
 " --- Plugins Config ---{{{
 
-" so ~/.config/nvim/dashboard.lua
-" let g:indentLine_fileTypeExclude = ['dashboard']
 
-
-" fzf with ctrlp
-nnoremap <c-p> :FZF<CR>
+" fzf with Ctrl+p
+nnoremap <c-p> :FZF ~<CR>
+let g:loaded_ctrlp = 1        "(0/1) -> (en/dis)able
+let g:ctrlp_cmd = 'CtrlP $PWD'
+" let g:ctrlp_working_path_mode = 'c'
 " let g:ctrlp_max_files = 1001
-" let g:ctrlp_working_path_mode = 'ra'
 
 
 " Nerd Commenter, add/remove spaces
@@ -249,7 +251,7 @@ let g:airline_powerline_fonts = 1
 
 
 " Coc
-"let g:coc_disable_startup_warning = 1
+let g:coc_disable_startup_warning = 1
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
@@ -277,6 +279,11 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+
+" Indentline
+let g:indentLine_conceallevel = 2
+let g:indentLine_setConceal = 1
 
 
 " IDE
