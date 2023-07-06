@@ -54,7 +54,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 # source: https://typewritten.dev/#/installation theme
 git clone https://github.com/reobin/typewritten.git $ZSH_CUSTOM/themes/typewritten
 sed -i 's/robbyrussell/typewritten\/typewritten/' .zshrc
-echo -e "\n\nTYPEWRITTEN_CURSOR='beam'" .zshrc
+echo -e "\n\nTYPEWRITTEN_CURSOR='beam'" >> .zshrc
 
 # Add zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions

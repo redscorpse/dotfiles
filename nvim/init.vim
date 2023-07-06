@@ -13,7 +13,6 @@ set cursorcolumn
 set wildmenu " show menu options
 set showcmd " shows what you type
 
-
 " Tabs
 set shiftwidth=2 " 2 spaces = tab
 set tabstop=2
@@ -85,18 +84,18 @@ nnoremap <C-s> :wq<CR>
 nnoremap <C-q> :q<CR>
 
 " Clipboard
-set clipboard^=unnamed,unnamedplus
+"set clipboard^=unnamed,unnamedplus
 " CTRL+C -> copy to clipboard
-vnoremap <C-c> "+y
-nnoremap <C-c> "+y
+"vnoremap <C-c> "+y
+"nnoremap <C-c> "+y
 " CTRL+x -> cut to clipboard
-vnoremap <C-x> "+d
-nnoremap <C-x> "+d
+"vnoremap <C-x> "+d
+"nnoremap <C-x> "+d
 " CTRL+v -> paste to clipboard
-nnoremap <C-v> "+p
-vnoremap <C-v> "+p
-nnoremap <C-v> "+P
-vnoremap <C-v> "+P
+"nnoremap <C-v> "+p
+"vnoremap <C-v> "+p
+"nnoremap <C-v> "+P
+"vnoremap <C-v> "+P
 
 
 " Turn off the highlighting after doing a search.
@@ -109,6 +108,8 @@ vnoremap c c<Esc>
 " Integrated terminal
 :nmap <C-t> :belowright split +terminal \| resize 10 \| startinsert<CR>
 
+" Hide line numbers
+nnoremap hln :set nonumber \| set norelativenumber<CR>
 
 "}}}
 
@@ -159,6 +160,7 @@ Plug 'ryanoasis/vim-devicons', {'commit': '58e57b6'}
 Plug 'preservim/vim-markdown'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
+Plug 'erietz/vim-terminator', { 'branch': 'main'}
 
 " --- Git
 Plug 'tpope/vim-fugitive'
@@ -175,11 +177,13 @@ call plug#end()
 
 
 " fzf with Ctrl+p
-nnoremap <c-p> :FZF ~<CR>
-let g:loaded_ctrlp = 1        "(0/1) -> (en/dis)able
+"nnoremap <c-p> :FZF ~<CR>
+let g:loaded_ctrlp = 0        "(0/1) -> (en/dis)able
 let g:ctrlp_cmd = 'CtrlP $PWD'
 " let g:ctrlp_working_path_mode = 'c'
-" let g:ctrlp_max_files = 1001
+let g:ctrlp_max_files = 300
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_match_window = 'top,order:btt,min:5,max:15,results:10'
 
 
 " Nerd Commenter, add/remove spaces
@@ -209,10 +213,10 @@ let NERDTreeDirArrows=2
 let NERDTreeShowLineNumbers=0
 let NERDTreeIgnore=['\.jpg$', '\.mp5$', '\.zip$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.tar$', '\.gz$', '\.xz$', '\.bz2$', '\.tz$', '\.db$', '\.exe$', '\.odt$', '\xlsx$', '\docx$', '\.tar$', '\.rar$', '\.img$', '\.odt$', '\.m4a$', '\.bmp$', '\.ogg$', '\.mp3$', '\.gzip$', '\.flv$', '\.deb$', '\.rpm$']
 
-if &columns > 120
-  " Start NERDTree and put the cursor back in the other window.
-  autocmd VimEnter * :NERDTreeFind | wincmd p
-endif
+" Start NERDTree at launch and put the cursor back in the other window.
+"if &columns > 120
+"  autocmd VimEnter * :NERDTreeFind | wincmd p
+"endif
 
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -304,6 +308,17 @@ let g:vim_bito_path = get(g:, 'vim_bito_path', "/usr/bin/bito")
 let g:vim_bito_prompt_append = get(g:, 'vim_bito_prompt_append', "")
 
 
+" Terminator
+let g:terminator_split_location = "belowright"
+let g:terminator_split_fraction = 0.25
+let g:terminator_runfile_map = {
+            \ "javascript": "node",
+            \ "python": "python -u",
+            \ "c": "gcc $dir$fileName -o $dir$fileNameWithoutExt && $dir$fileNameWithoutExt",
+            \ "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+            \ }
+
+
 "}}}
 
 "}}}
@@ -322,9 +337,9 @@ set nofoldenable
 
 " Use the marker method of folding.
 augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-    autocmd FileType vim set foldenable
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType vim set foldenable
 augroup END
 
 
