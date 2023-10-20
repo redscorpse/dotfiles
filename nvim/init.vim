@@ -27,6 +27,7 @@ set showtabline=2 "other files tabs
 " Theme
 set termguicolors
 set background=dark
+let g:codedark_transparent=1
 colorscheme codedark
 highlight Normal ctermbg=NONE
 set laststatus=2
@@ -61,11 +62,13 @@ endif
 " --- MAPPINGS ---{{{
 let mapleader = ' ' " by default, <leader> = \w
 
-" Press `SHIFT+E+e` to scape
+" Escape keybindings
 inoremap Ee <esc>
 vnoremap Ee <esc>
 nnoremap Ee <esc>
-
+inoremap <M-.> <esc>
+vnoremap <M-.> <esc>
+nnoremap <M-.> <esc>
 
 " Move lines up or down.
 nnoremap K :m .-2<CR>==
@@ -86,14 +89,15 @@ nnoremap <C-q> :q<CR>
 " Clipboard
 "set clipboard^=unnamed,unnamedplus
 " CTRL+C -> copy to clipboard
-"vnoremap <C-c> "+y
-"nnoremap <C-c> "+y
+vnoremap <C-c> "+y
+nnoremap <C-c> "+y
 " CTRL+x -> cut to clipboard
-"vnoremap <C-x> "+d
-"nnoremap <C-x> "+d
+vnoremap <C-x> "+d
+nnoremap <C-x> "+d
 " CTRL+v -> paste to clipboard
-"nnoremap <C-v> "+p
-"vnoremap <C-v> "+p
+inoremap <C-v> <esc>"+p
+nnoremap <C-v> "+p
+vnoremap <C-v> "+p
 "nnoremap <C-v> "+P
 "vnoremap <C-v> "+P
 
@@ -127,7 +131,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree' " Tree
 Plug 'junegunn/fzf'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'zhenyangze/vim-bitoai'
+Plug 'zhenyangze/vim-bitoai', { 'commit': '4a198f1' }
 
 " --- Utilities
 Plug 'Yggdroot/indentLine'
@@ -161,6 +165,7 @@ Plug 'preservim/vim-markdown'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'lifepillar/pgsql.vim' " PSQL Pluging needs :SQLSetType pgsql.vim
 Plug 'erietz/vim-terminator', { 'branch': 'main'}
+Plug 'jamestthompson3/nvim-remote-containers'
 
 " --- Git
 Plug 'tpope/vim-fugitive'
@@ -174,7 +179,6 @@ call plug#end()
 "}}}
 
 " --- Plugins Config ---{{{
-
 
 " fzf with Ctrl+p
 "nnoremap <c-p> :FZF ~<CR>
@@ -291,6 +295,7 @@ let g:indentLine_setConceal = 1
 
 
 " IDE
+let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 autocmd FileType json set conceallevel=0
 autocmd FileType markdown set conceallevel=0
